@@ -1,0 +1,25 @@
+{
+  "name": "object-key-filter",
+  "version": "0.0.1",
+  "author": {
+    "name": "Tim Kuijsten",
+    "email": "tim@netsend.nl",
+    "url": "https://github.com/timkuijsten"
+  },
+  "license": "ISC",
+  "description": "Filter certain keys from an object without side-effects",
+  "keywords": [
+    "object",
+    "key",
+    "filter"
+  ],
+  "main": "index.js",
+  "bugs": "https://github.com/timkuijsten/node-object-key-filter/issues",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/timkuijsten/node-object-key-filter.git"
+  }
+}
