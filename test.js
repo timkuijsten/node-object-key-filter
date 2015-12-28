@@ -40,6 +40,10 @@ assert.deepEqual(filter(obj, ['foo', '%']), { $: '$' });
 var obj = { $: '$', foo: { $: '$' } };
 assert.deepEqual(filter(obj, ['$']), { foo: { $: '$' } });
 
+// should recurse with null (regression)
+var obj = { $: '$', foo: { $: null, bar: { some: 'other' } }, a: 'b' };
+assert.deepEqual(filter(obj, ['$'], true), { foo: { bar: { some: 'other' } } , a: 'b' });
+
 // should recurse
 var obj = { $: '$', foo: { $: '$', bar: { some: 'other' } }, a: 'b' };
 assert.deepEqual(filter(obj, ['$'], true), { foo: { bar: { some: 'other' } } , a: 'b' });

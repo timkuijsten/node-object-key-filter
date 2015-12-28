@@ -28,7 +28,9 @@ function filter(obj, keys, recurse) {
   if (typeof obj !== 'object') { throw new TypeError('obj must be an object'); }
   if (!Array.isArray(keys)) { throw new TypeError('keys must be an array'); }
 
-  recurse = recurse || false;
+  if (recurse == null) {
+    recurse = false;
+  }
   if (typeof recurse !== 'boolean') { throw new TypeError('recurse must be a boolean'); }
 
   var result = {};
@@ -37,7 +39,7 @@ function filter(obj, keys, recurse) {
     if (~keys.indexOf(key)) { return; }
 
     // recurse if requested and possible
-    if (recurse && typeof obj[key] === 'object' && Object.keys(obj[key]).length) {
+    if (recurse && obj[key] != null && typeof obj[key] === 'object' && Object.keys(obj[key]).length) {
       result[key] = filter(obj[key], keys, recurse);
     } else {
       result[key] = obj[key];
