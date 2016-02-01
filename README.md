@@ -44,9 +44,9 @@ Filter certain keys from an object without side-effects, optionally recurse.
 
 ISC
 
-Copyright (c) 2014 Tim Kuijsten
+Copyright (c) 2014, 2015, 2016 Tim Kuijsten
 
-Permission to use, copy, modify, and distribute this software for any
+Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
 copyright notice and this permission notice appear in all copies.
 
