@@ -44,10 +44,11 @@ assert.deepEqual(filter(obj, ['$']), { foo: { $: '$' } });
 var obj = { $: '$', foo: { $: null, bar: { some: 'other' } }, a: 'b' };
 assert.deepEqual(filter(obj, ['$'], true), { foo: { bar: { some: 'other' } } , a: 'b' });
 
-// should not recurse into an array (regression)
-var obj = { $: '$', foo: { $: ['a', 'b'], bar: { some: ['a', 'b'] } }, a: 'b' };
-assert.deepEqual(filter(obj, ['$'], true), { foo: { bar: { some: ['a', 'b'] } } , a: 'b' });
-assert(Array.isArray(filter(obj, ['$'], true).foo.bar.some));
+// should copy an array into a new array (regression)
+var obj = { $: '$', foo: { $: ['a', 'b'], bar: { some: ['a', { $: 'b' }, 'c'] } }, a: 'b' };
+var result = filter(obj, ['$'], true);
+assert(Array.isArray(result.foo.bar.some));
+assert.deepEqual(result.foo.bar.some, ['a', {}, 'c']);
 
 // should recurse
 var obj = { $: '$', foo: { $: '$', bar: { some: 'other' } }, a: 'b' };
