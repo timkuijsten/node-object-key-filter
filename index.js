@@ -39,7 +39,7 @@ function filter(obj, keys, recurse) {
     if (~keys.indexOf(key)) { return; }
 
     // recurse if requested and possible
-    if (recurse && obj[key] != null && typeof obj[key] === 'object' && Object.keys(obj[key]).length) {
+    if (recurse && obj[key] != null && typeof obj[key] === 'object' && !Array.isArray(obj[key]) && Object.keys(obj[key]).length) {
       result[key] = filter(obj[key], keys, recurse);
     } else {
       result[key] = obj[key];
