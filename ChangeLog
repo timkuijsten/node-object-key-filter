@@ -1,3 +1,9 @@
+2016.02.01, Version 0.0.3
+
+* update copyright year
+* don't descend into an array
+
+
 2015.12.28, Version 0.0.2
 
 * don't recurse on null values
