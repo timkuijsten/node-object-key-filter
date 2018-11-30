@@ -5,22 +5,24 @@ Filter certain keys from an object without side-effects, optionally recurse.
 ## Example
 
 Remove the key `baz` from an object:
+```js
+const assert = require('assert');
+const filter = require('object-key-filter');
 
-    var assert = require('assert');
-    var filter = require('object-key-filter');
+const obj = {
+  foo: 'bar',
+  baz: { foo: 'quz' }
+};
 
-    var obj = {
-      foo: 'bar',
-      baz: { foo: 'quz' }
-    };
-
-    var obj2 = filter(obj, ['baz']);
-    assert.deepEqual(obj2, { foo: 'bar' });
+const obj2 = filter(obj, ['baz']);
+assert.deepEqual(obj2, { foo: 'bar' });
+```
 
 Remove the key `foo` recursively:
-
-    var obj3 = filter(obj, ['foo'], true);
-    assert.deepEqual(obj3, { baz: {} });
+```js
+const obj3 = filter(obj, ['foo'], true);
+assert.deepEqual(obj3, { baz: {} });
+```
 
 ## Installation
 
